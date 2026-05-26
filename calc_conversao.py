@@ -43,3 +43,23 @@ def km_para_milhas(km):
         raise ValueError(f"Distância não pode ser negativa: {km}km")
     
     return km * 0.621371
+
+
+def kg_para_libras(kg):
+    
+    if kg is None:
+        raise ValueError("Peso não pode ser nulo")
+    
+    if not isinstance(kg, (int, float)):
+        raise TypeError(f"Esperado número, recebido {type(kg).__name__}")
+    
+    if math.isnan(kg):
+        raise ValueError("Valor inválido: NaN")
+    
+    if math.isinf(kg):
+        raise ValueError("Valor inválido: infinito")
+    
+    if kg < 0:
+        raise ValueError(f"Peso não pode ser negativo: {kg}kg")
+    
+    return kg * 2.20462
