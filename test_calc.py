@@ -38,4 +38,31 @@ class TestCalcConversao(unittest.TestCase):
         with self.assertRaises(ValueError):
             calc_conversao.celsius_para_fahrenheit(float('inf'))
 
+ # km_para_milhas
+    def test_km_valor_normal(self):
+        self.assertAlmostEqual(calc_conversao.km_para_milhas(1), 0.621371, places=5)
+
+    def test_km_zero(self):
+        self.assertEqual(calc_conversao.km_para_milhas(0), 0)
+
+    def test_km_none(self):
+        with self.assertRaises(ValueError):
+            calc_conversao.km_para_milhas(None)
+
+    def test_km_tipo_invalido(self):
+        with self.assertRaises(TypeError):
+            calc_conversao.km_para_milhas("dez")
+
+    def test_km_negativo(self):
+        with self.assertRaises(ValueError):
+            calc_conversao.km_para_milhas(-5)
+
+    def test_km_nan(self):
+        with self.assertRaises(ValueError):
+            calc_conversao.km_para_milhas(float('nan'))
+
+    def test_km_infinito(self):
+        with self.assertRaises(ValueError):
+            calc_conversao.km_para_milhas(float('inf'))
+
 unittest.main()
