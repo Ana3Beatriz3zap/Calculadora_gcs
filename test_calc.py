@@ -64,5 +64,32 @@ class TestCalcConversao(unittest.TestCase):
     def test_km_infinito(self):
         with self.assertRaises(ValueError):
             calc_conversao.km_para_milhas(float('inf'))
+        
+# kg_para_libras
+    def test_kg_valor_normal(self):
+        self.assertAlmostEqual(calc_conversao.kg_para_libras(1), 2.20462, places=5)
+
+    def test_kg_zero(self):
+        self.assertEqual(calc_conversao.kg_para_libras(0), 0)
+
+    def test_kg_none(self):
+        with self.assertRaises(ValueError):
+            calc_conversao.kg_para_libras(None)
+
+    def test_kg_tipo_invalido(self):
+        with self.assertRaises(TypeError):
+            calc_conversao.kg_para_libras("dez")
+
+    def test_kg_negativo(self):
+        with self.assertRaises(ValueError):
+            calc_conversao.kg_para_libras(-5)
+
+    def test_kg_nan(self):
+        with self.assertRaises(ValueError):
+            calc_conversao.kg_para_libras(float('nan'))
+
+    def test_kg_infinito(self):
+        with self.assertRaises(ValueError):
+            calc_conversao.kg_para_libras(float('inf'))
 
 unittest.main()
