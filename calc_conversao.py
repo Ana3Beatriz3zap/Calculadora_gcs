@@ -23,3 +23,23 @@ def celsius_para_fahrenheit(celsius):
         raise ValueError(f"Temperatura {celsius}°C está abaixo do zero absoluto (-273.15°C)")
      
      return (celsius * 9 / 5) + 32
+
+
+def km_para_milhas(km):
+    
+    if km is None:
+        raise ValueError("Distância não pode ser nula")
+    
+    if not isinstance(km, (int, float)):
+        raise TypeError(f"Esperado número, recebido {type(km).__name__}")
+    
+    if math.isnan(km):
+        raise ValueError("Valor inválido: NaN")
+    
+    if math.isinf(km):
+        raise ValueError("Valor inválido: infinito")
+    
+    if km < 0:
+        raise ValueError(f"Distância não pode ser negativa: {km}km")
+    
+    return km * 0.621371
