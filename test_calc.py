@@ -25,7 +25,7 @@ class TestCalcPotencia(unittest.TestCase):
         self.assertEqual(calc_potencia.raiz_cubica(0), 0)
         self.assertEqual(calc_potencia.raiz_cubica(-27), -3)
         
- class TestCalcPercentual(unittest.TestCase):
+class TestCalcPercentual(unittest.TestCase):
 	def test_percentual(self):
 		self.assertEqual(calc_percentual.percentual(200, 10), 20)
 
@@ -87,7 +87,7 @@ class TestCalcEstatistica(unittest.TestCase):
             calc_estatistica.moda([1, 2, 2, 3]), 2
         )
   
-  class TestCalcConversao(unittest.TestCase):
+class TestCalcConversao(unittest.TestCase):
 
     # celsius_para_fahrenheit
     def test_celsius_ponto_de_gelo(self):

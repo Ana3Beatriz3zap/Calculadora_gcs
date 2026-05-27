@@ -1,3 +1,8 @@
+# calc_potencia.py 
+# Módulo B — Potência
+# Autor: Ana Ottoni
+# Branch: feature/modulo-potencia 
+
 import math
 
 def potencia (a , b):
