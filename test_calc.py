@@ -1,10 +1,96 @@
 #Arquivo - contendo os testes unitários para cada módulo da calculadora
 import unittest
-import calc_conversao
-import calc_estatistica
+import calc_potencia
 import calc_percentual
+<<<<<<< HEAD
 import calc_basico
+=======
+import calc_estatistica
+import calc_conversao
+>>>>>>> 666d127374be32142afc3ae875f299e855cedec9
 
+
+class TestCalcPotencia(unittest.TestCase):
+
+    def test_potencia(self):
+        self.assertEqual(calc_potencia.potencia(5, 2), 25)
+        self.assertEqual(calc_potencia.potencia(0, 5), 0)
+        self.assertEqual(calc_potencia.potencia(5, 0), 1)
+        self.assertEqual(calc_potencia.potencia(-2, 3), -8)
+
+    def test_raiz_quadrada(self):
+        self.assertEqual(calc_potencia.raiz_quadrada(36), 6)
+        self.assertEqual(calc_potencia.raiz_quadrada(0), 0)
+        with self.assertRaises(ValueError):
+            calc_potencia.raiz_quadrada(-4)
+
+    def test_raiz_cubica(self):
+        self.assertEqual(calc_potencia.raiz_cubica(27), 3)
+        self.assertEqual(calc_potencia.raiz_cubica(0), 0)
+        self.assertEqual(calc_potencia.raiz_cubica(-27), -3)
+        
+class TestCalcPercentual(unittest.TestCase):
+	def test_percentual(self):
+		self.assertEqual(calc_percentual.percentual(200, 10), 20)
+
+	def test_acrescimo(self):
+		self.assertEqual(calc_percentual.acrescimo(200, 10), 220)
+
+	def test_desconto(self):
+		self.assertEqual(calc_percentual.desconto(200, 10), 180)
+
+	def test_percentual_zero_porcentagem(self):
+		self.assertEqual(calc_percentual.percentual(100, 0), 0.0)
+
+	def test_percentual_zero_valor(self):
+		self.assertEqual(calc_percentual.percentual(0, 50), 0.0)
+
+	def test_percentual_negative_porcentagem(self):
+		self.assertEqual(calc_percentual.percentual(100, -10), -10.0)
+
+	def test_percentual_negative_valor(self):
+		self.assertEqual(calc_percentual.percentual(-100, 10), -10.0)
+
+	def test_percentual_over_100(self):
+		self.assertEqual(calc_percentual.percentual(50, 150), 75.0)
+
+	def test_percentual_decimal(self):
+		self.assertAlmostEqual(calc_percentual.percentual(99.99, 12.5), 12.49875, places=7)
+
+	def test_invalid_type_none(self):
+		with self.assertRaises(TypeError):
+			calc_percentual.percentual(None, 10)
+
+	def test_invalid_type_string(self):
+		with self.assertRaises(TypeError):
+			calc_percentual.acrescimo("100", 10)
+
+	def test_nan_porcentagem(self):
+		with self.assertRaises(ValueError):
+			calc_percentual.percentual(100, float('nan'))
+
+	def test_inf_valor(self):
+		with self.assertRaises(ValueError):
+			calc_percentual.desconto(float('inf'), 10)
+        
+        
+class TestCalcEstatistica(unittest.TestCase):
+
+    def test_media(self):
+        self.assertEqual(
+            calc_estatistica.media([2, 4, 6, 8]), 5
+        )
+
+    def test_mediana(self):
+        self.assertEqual(
+            calc_estatistica.mediana([1, 3, 5]), 3
+        )
+
+    def test_moda(self):
+        self.assertEqual(
+            calc_estatistica.moda([1, 2, 2, 3]), 2
+        )
+  
 class TestCalcConversao(unittest.TestCase):
 
     # celsius_para_fahrenheit
@@ -93,68 +179,6 @@ class TestCalcConversao(unittest.TestCase):
     def test_kg_infinito(self):
         with self.assertRaises(ValueError):
             calc_conversao.kg_para_libras(float('inf'))
-
-
-class TestEstatistica(unittest.TestCase):
-
-    def test_media(self):
-        self.assertEqual(
-            calc_estatistica.media([2, 4, 6, 8]), 5
-        )
-
-    def test_mediana(self):
-        self.assertEqual(
-            calc_estatistica.mediana([1, 3, 5]), 3
-        )
-
-    def test_moda(self):
-        self.assertEqual(
-            calc_estatistica.moda([1, 2, 2, 3]), 2
-        )
-
-class TestCalcPercentual(unittest.TestCase):
-	def test_percentual(self):
-		self.assertEqual(calc_percentual.percentual(200, 10), 20)
-
-	def test_acrescimo(self):
-		self.assertEqual(calc_percentual.acrescimo(200, 10), 220)
-
-	def test_desconto(self):
-		self.assertEqual(calc_percentual.desconto(200, 10), 180)
-
-	def test_percentual_zero_porcentagem(self):
-		self.assertEqual(calc_percentual.percentual(100, 0), 0.0)
-
-	def test_percentual_zero_valor(self):
-		self.assertEqual(calc_percentual.percentual(0, 50), 0.0)
-
-	def test_percentual_negative_porcentagem(self):
-		self.assertEqual(calc_percentual.percentual(100, -10), -10.0)
-
-	def test_percentual_negative_valor(self):
-		self.assertEqual(calc_percentual.percentual(-100, 10), -10.0)
-
-	def test_percentual_over_100(self):
-		self.assertEqual(calc_percentual.percentual(50, 150), 75.0)
-
-	def test_percentual_decimal(self):
-		self.assertAlmostEqual(calc_percentual.percentual(99.99, 12.5), 12.49875, places=7)
-
-	def test_invalid_type_none(self):
-		with self.assertRaises(TypeError):
-			calc_percentual.percentual(None, 10)
-
-	def test_invalid_type_string(self):
-		with self.assertRaises(TypeError):
-			calc_percentual.acrescimo("100", 10)
-
-	def test_nan_porcentagem(self):
-		with self.assertRaises(ValueError):
-			calc_percentual.percentual(100, float('nan'))
-
-	def test_inf_valor(self):
-		with self.assertRaises(ValueError):
-			calc_percentual.desconto(float('inf'), 10)
         
 
 class TestCalcBasico(unittest.TestCase):
@@ -184,3 +208,4 @@ class TestCalcBasico(unittest.TestCase):
             calc_basico.somar("texto", 5)
 
 unittest.main()
+
