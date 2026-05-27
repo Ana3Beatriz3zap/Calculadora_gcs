@@ -1,8 +1,10 @@
+import math
+
 def potencia (a , b):
     return a**b
 
 def raiz_quadrada(a):
-    return a**0.5
+    return math.sqrt(a)
 
 def raiz_cubica (a):
-    return a**(1/3)
+    return math.cbrt(a)
