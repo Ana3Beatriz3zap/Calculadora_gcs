@@ -3,6 +3,7 @@ import unittest
 import calc_conversao
 import calc_estatistica
 import calc_percentual
+import calc_basico
 
 class TestCalcConversao(unittest.TestCase):
 
@@ -155,4 +156,31 @@ class TestCalcPercentual(unittest.TestCase):
 		with self.assertRaises(ValueError):
 			calc_percentual.desconto(float('inf'), 10)
         
+
+class TestCalcBasico(unittest.TestCase):
+
+    def test_soma(self):
+        self.assertEqual(calc_basico.somar(5, 3), 8.0)
+        self.assertEqual(calc_basico.somar(-1, 1), 0.0)
+
+    def test_subtracao(self):
+        self.assertEqual(calc_basico.subtrair(10, 4), 6.0)
+
+    def test_multiplicacao(self):
+        self.assertEqual(calc_basico.multiplicar(3, 4), 12.0)
+        self.assertEqual(calc_basico.multiplicar(5, 0), 0.0)
+
+    def test_divisao(self):
+        self.assertEqual(calc_basico.dividir(10, 2), 5.0)
+        
+    def test_divisao_por_zero(self):
+        # o código joga o erro correto quando divide por zero
+        with self.assertRaises(ValueError):
+            calc_basico.dividir(10, 0)
+
+    def test_entradas_invalidas(self):
+        # o código rejeita tipos que não são números
+        with self.assertRaises(TypeError):
+            calc_basico.somar("texto", 5)
+
 unittest.main()
