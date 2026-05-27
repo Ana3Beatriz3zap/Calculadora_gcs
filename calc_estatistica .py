@@ -1,3 +1,8 @@
+# calc_estatistica.py 
+# Módulo D — Operações Estatísticas 
+# Autor: Isabela Fernandes Lopes
+# Branch: feature/modulo-estatistica 
+
 import statistics
 
 def media(lista):
